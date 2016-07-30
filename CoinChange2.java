@@ -29,12 +29,31 @@ public class CoinChange2 {
         for(int i=0;i<len;i++)
             s[i]=sc.nextInt();
         
-        long[][] mat = new long[s.length+1][sum+1];
+       
+       //normal DP approach
+       // O(M x N) space 
+       method1(s,sum); 
+       
+       //space efficient DP approach
+       // O(n) space
+       method2(s,sum);
+        
+        
+        
+        
+    }
+    
+    /*
+     * Use of 2-D array for storing previous result
+     */
+    public static void method1(int[] s, int sum){
+    	
+    	long[][] mat = new long[s.length+1][sum+1];
         
         for(int i=0;i<sum+1;i++)
         		mat[0][i]=Integer.MAX_VALUE;
         
-        for(int i=1;i<=len;i++){
+        for(int i=1;i<=s.length;i++){
             for(int j=0;j<=sum;j++){
             	
             	
@@ -53,7 +72,22 @@ public class CoinChange2 {
         }
         
         System.out.println(mat[s.length][sum]);
-        
-        
     }
+    
+    public static void method2(int[] s, int sum){
+    	long[] mat = new long[sum+1];
+    	Arrays.fill(mat,Long.MAX_VALUE-1);
+    	mat[0]=0;
+    	
+    	for(int i=0;i<s.length;i++){
+    		for(int j=1;j<=sum;j++){
+    			if(j>=s[i])
+    			mat[j]=Math.min(mat[j], 1+mat[j-s[i]]);
+    		}
+    	}
+    	
+    	System.out.println(mat[sum]);
+    	
+    }
+    
 }

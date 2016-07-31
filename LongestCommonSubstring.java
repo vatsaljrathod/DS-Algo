@@ -1,5 +1,5 @@
 /*
-Longest common sub-sequence
+Longest common sub-string
 Dynamic programming approach
 */
 import java.io.*;

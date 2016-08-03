@@ -70,7 +70,7 @@ public class Combination {
 		
 		for(int i=index;i<ch.length;i++){
 			//System.out.print(" >> "+ch[i]+" ## "+dindex);
-			if(i==index || prev!=ch[i]){
+			if(prev!=ch[i]){
 				ans[dindex]=ch[i];
 				findCombination1(ch,ans,r,i+1,dindex+1);
 			}
